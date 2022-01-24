@@ -1,0 +1,15 @@
+
+#todo-input{
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid black;
+    width: 60%;
+    font-size: 18px;
+    padding: 5px 15px;   
+}
+
+#todo-input:active,
+#todo-input:focus,
+#todo-input:focus-visible{
+    outline: none;
+}
