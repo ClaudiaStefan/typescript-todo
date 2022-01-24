@@ -25,12 +25,32 @@ const App: React.FC = () => {
     setTodoList(newList);
     inputRef.current.value = '';
   }, [todoList]);
+  
+  const RemoveToDo = useCallback((id) => {
+    setTodoList(todoList.filter(todo => todo.id !== id));
+  }, [todoList]);
+
+  const Done = useCallback((id) => {
+    const newList = todoList.map(todo => {
+      if (todo.id === id) {
+        todo.done = !todo.done;
+      }
+      return todo;
+    });
+    newList.sort((a,b) => {
+      if(a.done) {
+        return 1;
+      }
+      return -1;
+    })
+    setTodoList(newList);
+  }, [todoList]);
 
   return (
     <div className="App">
       <Title  appTitle='Typescript ToDo list' />
       <Add inputRef={inputRef} onClick={addTodos}/>
-      <TodoList todoList={todoList} />
+      <TodoList todoList={todoList} removeCb={RemoveToDo} doneCb={Done} />
     </div>
   );
 }

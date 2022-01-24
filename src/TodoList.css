@@ -1,0 +1,15 @@
+#TodoListTable{
+    margin: 0 auto;
+    width: 80%;
+}
+
+.ToDoText {
+    word-break: break-all;
+}
+.ToDoChecked {
+    text-decoration: line-through;
+    background-color: lightseagreen;
+}
+.Actions {
+    min-width: 200px;
+}

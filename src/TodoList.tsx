@@ -5,15 +5,29 @@ import TodoItem from './TodoItem';
 
 interface Props {
     todoList: Array<Todo>,
+    removeCb: (id:string) => void,
+    doneCb: (id:string) => void,
 };
 
-const TodoList: React.FC<Props> = ({ todoList }) => {
+const TodoList: React.FC<Props> = ({ todoList, removeCb, doneCb }) => {
+  if (!todoList.length) {
+    return null;
+  }
+    
   return (
-    <div>
-        {todoList.map((todo) => (
-            <TodoItem key={todo.id} todo={todo}/>
-        ))}
-    </div>
+    <table id="TodoListTable">
+        <thead>
+            <tr>
+                <th>ToDo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {todoList.map((todo) => (
+                <TodoItem key={todo.id} todo={todo} removeCb={removeCb} doneCb={doneCb} />
+            ))}
+        </tbody>
+    </table>
   );
 }
 
